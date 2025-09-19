@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>473</width>
+    <height>423</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background: 'black'</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>30</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 12pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;
+</string>
+   </property>
+   <property name="text">
+    <string>Player Begins</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt1">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>90</y>
+     <width>91</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>90</y>
+     <width>91</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt3">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>90</y>
+     <width>91</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt4">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>180</y>
+     <width>91</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt5">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>180</y>
+     <width>91</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt6">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>180</y>
+     <width>91</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt7">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>270</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt8">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>270</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="felt9">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>270</y>
+     <width>91</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;
+font: 700 32pt &quot;Segoe UI&quot;;
+background: &quot;black&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>260</y>
+     <width>311</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:&quot;white&quot;;</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Plain</enum>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>170</y>
+     <width>301</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:'white'</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Plain</enum>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>90</y>
+     <width>16</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:'white'</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Plain</enum>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>90</y>
+     <width>31</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:'white'</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Plain</enum>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>380</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:'white'</string>
+   </property>
+   <property name="text">
+    <string>score: </string>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="dialog">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>0</y>
+     <width>161</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: 'white'; 
+background: 'grey'
+</string>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::StandardButton::No|QDialogButtonBox::StandardButton::Yes</set>
+   </property>
+  </widget>
+  <zorder>line</zorder>
+  <zorder>line_2</zorder>
+  <zorder>line_3</zorder>
+  <zorder>line_4</zorder>
+  <zorder>label</zorder>
+  <zorder>felt1</zorder>
+  <zorder>felt2</zorder>
+  <zorder>felt3</zorder>
+  <zorder>felt4</zorder>
+  <zorder>felt5</zorder>
+  <zorder>felt6</zorder>
+  <zorder>felt7</zorder>
+  <zorder>felt8</zorder>
+  <zorder>felt9</zorder>
+  <zorder>label_2</zorder>
+  <zorder>dialog</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
