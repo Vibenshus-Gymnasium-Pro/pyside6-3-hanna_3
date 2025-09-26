@@ -44,9 +44,11 @@ class single_player_view(QWidget):
         self.minimax_player = 'O' # if self.current_player == 'X' else 'X'
         self.x_score = 0
         self.y_score = 0
-        self.minimizer =''
-        self.maximizer =''
-
+        self.minimizer ='X'
+        self.maximizer ='O'
+        self.minimax_board = ['','','',
+                         '','','',
+                         '','','']
         
         for button in self.board: # for each element in list it checks if its clicked
             button.clicked.connect(lambda checked, b=button: self.make_move(b)) 
@@ -81,18 +83,15 @@ class single_player_view(QWidget):
             bestmove = self.best_move()
             #for button in self.board:
                 #if button.text() == '' and self.board.index(button) == bestmove:
-                
+            if bestmove is not None:
+                print("computer's turn")
+                self.board[bestmove].setText(self.minimax_player)   
             #        print( "computer's turn 2")
             #        button.setText(self.minimax_player)
-            m = [self.board.index(x) for x in self.board if x.text() == '']
-            for i in m:
-                if i == bestmove:
-                    print( "computer's turn")
-                    self.board[i].setText(self.minimax_player)
             #self.board[best_move].setText(self.minimax_player)
             self.switch_turn()
-            self.check_winner(board=self.board)
-            if self.check_winner(board=self.board) == True:
+            self.check_winner()
+            if self.check_winner() == True:
                 self.play_again()
 
 #create a minimizer (oponent) that choses the worst possible move for us(the computer)
@@ -105,49 +104,60 @@ class single_player_view(QWidget):
 # if is player turn return maximun score of the list
 
 #create a list of the empty board fields and chose the maximum scoring move (the maximizer)
-    def minimax(self):
-        winner = self.check_winner()
+    def minimax(self, player, minimax_board):
+        winner = self.check_winner_minimax_board(minimax_board)
         if winner == self.minimizer:
             return -10
         elif winner == self.maximizer:
-             return 10
+            return 10
         elif winner == 'tie':
             return 0    
-        scores = []
-        for i in self.board:
-            if i.text() == '':
-                if self.minimizer != self.maximizer:
-                    i.setText(self.maximizer) 
-                else:
-                    i.setText(self.minimizer) 
-
-                score = self.minimax() # switch players betwen moves
-                scores.append(score) # add the score of the move to the list
-                i.setText('') # undo the move
-                    
-        return max(scores) if self.maximizer != self.minimizer else min(scores)
+        moves = []
+        next_player = self.minimizer if player == self.maximizer else self.maximizer
+        for i in range(9):
+            if minimax_board[i] == '':
+                copy_board = minimax_board.copy()
+                copy_board[i] = player
+                score = self.minimax(next_player, copy_board) # switch players betwen moves in the board
+                moves.append(score) # add the score of the move to the list
+            if not moves:
+                print("no moves")
+                return 0    
+        return max(moves) if player==self.maximizer else min(moves)
             # when all moves have been evaluated,break the loop and choose the move with the highest score
  
     def best_move(self):
+        minimax_board = [i.text() for i in self.board]
         best_score = -float('inf')# means negative infinity
-        move = [0]
+        move = None # maybe [0]
         #m = [self.board.index(x) for x in self.board if x.text() == '']
         #turn = lambda# switch between players
-        for i in self.board:
-                if self.minimizer != self.maximizer:
-                    i.setText(self.maximizer) 
-                else:
-                    i.setText(self.minimizer) 
-                score = self.minimax()
-                
+        for i in range(9):
+                if minimax_board[i] == '':
+                    minimax_board[i]= self.maximizer
+                    score = self.minimax(self.minimizer, minimax_board)      
+                    minimax_board[i] = ''         
                  #self.board, 'O' if self.minimizer == 'X' else 'X', self.maximizer
         # this represents the score from the minimax function for the maximizer
-                i.setText('')
-                if score > best_score:
-                    best_score = score
-                    move = [self.board.index(i)] # get the index of the button in the board list
+    
+                    if score > best_score:
+                        best_score = score
+                        move = i
+        # get the index of the button in the board list this is done with the range(9) loop
         return move
 
+    def check_winner_minimax_board(self, minimax_board):
+        wins = [(0, 1, 2), (3, 4, 5), (6, 7, 8),  # horizontals
+                (0, 3, 6), (1, 4, 7), (2, 5, 8),  # verticals
+                (0, 4, 8), (2, 4, 6)]  # diagonals
+        for line in wins:
+            if minimax_board[line[0]] == minimax_board[line[1]] == minimax_board[line[2]] and minimax_board[line[1]] != '':    
+                return minimax_board[line[0]]
+                
+        if all(cell != "" for cell in minimax_board): # returns true for boolean in all variables in list
+            return 'tie'
+        return None
+    
 
     def play_again(self):
         self.ui.dialog_buttons.show()
@@ -164,28 +174,33 @@ class single_player_view(QWidget):
             self.turn = self.player
         
     def check_winner(self):
+        #self.minimax_board = [i.text() for i in self.board]
+
         wins = [(0, 1, 2), (3, 4, 5), (6, 7, 8),  # horizontals
                 (0, 3, 6), (1, 4, 7), (2, 5, 8),  # verticals
                 (0, 4, 8), (2, 4, 6)]  # diagonals
-        
-        self.board_matrix = [[self.button.text() for self.button in self.board]]
-        for i in wins:
-            if self.board_matrix[0] == self.board_matrix[1] == self.board_matrix[2] and self.board_matrix[1] != '':
+        board = [i.text() for i in self.board]
+        for line in wins:
+            if board[line[0]] == board[line[1]] == board[line[2]] and board[line[1]] != '':    
+                self.__class__.winner = board[line[0]]
+                self.ui.dialog_label.setText(f"Player {self.__class__.winner} wins!")
                 self.play_again()
-                self.__class__.winner = self.board[line[0]]
-                if self.__class__.winner == 'X' :
-                    self.x_score += 1
-                elif self.__class__.winner == 'O' :
-                    self.y_score +=1
-                """kunne bruge map function her?? tjek"""
-                self.ui.label_2.setText(f"Score: X: {self.x_score} - O: {self.y_score}")
-                return True  
-            return self.board[line[0]]
+            return self.__class__.winner
+        
             
+                #if self.__class__.winner == 'X' :
+                #   self.x_score += 1
+                #elif self.__class__.winner == 'O' :
+                #    self.y_score +=1
+                #"""kunne bruge map function her?? tjek"""
+                #self.ui.label_2.setText(f"Score: X: {self.x_score} - O: {self.y_score}")
+                #return self.minimax_board[line[0]]
             
         if all(cell != "" for cell in self.board): # returns true for boolean in all variables in list
-            return 'tie'
-        return True
+            self.ui.dialog_label.setText("It's a tie!")
+        return None
+    
+#to learn from:
     
 """def minimax (curDepth, nodeIndex,
              maxTurn, scores, 
